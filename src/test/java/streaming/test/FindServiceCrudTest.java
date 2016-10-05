@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming.dao;
+package streaming.test;
 
-import org.springframework.data.repository.CrudRepository;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author admin
  */
-public interface SaisonDAO extends CrudRepository<SaisonDAO, Long>{
+public class FindServiceCrudTest {
+    
+   
     
 }

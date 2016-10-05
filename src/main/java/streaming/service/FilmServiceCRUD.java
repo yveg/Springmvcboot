@@ -1,4 +1,4 @@
-package streaming.dao;
+package streaming.service;
 
 
 import java.io.Serializable;
@@ -16,6 +16,6 @@ import streaming.entity.Film;
  * @author admin
  */
 // crudRepository<entity, Type de la clef primaire>
-public interface FilmDAO extends CrudRepository<Film, Long> {
+public interface FilmServiceCRUD extends CrudRepository<Film, Long> {
     
 }

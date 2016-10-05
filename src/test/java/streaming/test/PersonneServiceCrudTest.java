@@ -7,12 +7,14 @@ package streaming.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.dao.PersonneDAO_old;
+import org.springframework.transaction.annotation.Transactional;
 import streaming.entity.Personne;
+import streaming.service.PersonneServiceCRUD;
 import streaming.spring.SpringConfig;
 
 /**
@@ -21,19 +23,31 @@ import streaming.spring.SpringConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringConfig.class)
-public class personneTestDAO {
+public class PersonneServiceCrudTest {
 
     @Autowired
-    private PersonneDAO_old dao;
+    private PersonneServiceCRUD serv;
     
-    @Test
-    public void test(){
+    @Before
+    public void beforeTest(){
+        serv.deleteAll();
         
         Personne p = new Personne();
-        p.setNom("JEROME");
+        p.setNom("VDP");
+        p.setPrenom("jerome");
         
-        dao.ajouter(p);
-        System.out.println(dao.lister());
+        Personne p1 = new Personne();
+        p1.setNom("DIGNA");
+        p1.setPrenom("Thomas");
+        
+        serv.save(p);
+        serv.save(p1);
+    }
+    
+    @Test
+    public void findOneByPrenomAndNomTest(){
+        
+        serv.findOneByPrenomAndNom("jerome", "VDP");
      
     }
     
