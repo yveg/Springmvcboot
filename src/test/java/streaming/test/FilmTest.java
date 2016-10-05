@@ -28,7 +28,7 @@ public class FilmTest {
     @Autowired
     private FilmServiceCRUD dao;
     
-    @Before
+//    @Before
     public void avant(){
         
         dao.deleteAll();
@@ -37,8 +37,8 @@ public class FilmTest {
     @Test
     public void ajouterDeuxFilms() {
         
-        dao.save(new Film());
-        dao.save(new Film());
+//        dao.save(new Film());
+//        dao.save(new Film());
     }
     
 }
