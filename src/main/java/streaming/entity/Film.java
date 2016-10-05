@@ -50,6 +50,14 @@ public class Film implements Serializable {
     @JoinTable(name = "pays_film")
     private List<Pays> pays = new ArrayList<>();
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     public Long getId() {
         return id;
     }

@@ -23,11 +23,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 import org.xml.sax.InputSource;
-import streaming.entity.Personne;
 import streaming.service.FilmServiceCRUD;
-import streaming.service.PersonneServiceCRUD;
 import streaming.spring.SpringConfig;
 
 /**
@@ -36,27 +33,14 @@ import streaming.spring.SpringConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringConfig.class)
-public class PersonneServiceCrudTest {
 
+public class FilmServiceCrudTest {
     @Autowired
     private FilmServiceCRUD serv;
     
     @Before
-    public void beforeTest() throws ClassNotFoundException, SQLException, DatabaseUnitException, FileNotFoundException{
-     /*   serv.deleteAll();
-        
-        Personne p = new Personne();
-        p.setNom("VDP");
-        p.setPrenom("jerome");
-        
-        Personne p1 = new Personne();
-        p1.setNom("DIGNA");
-        p1.setPrenom("Thomas");
-        
-        serv.save(p);
-        serv.save(p1);
-        */
-      // Connexion DB
+    public void FilmServiceCrudTest() throws ClassNotFoundException, SQLException, DatabaseUnitException, FileNotFoundException {
+           // Connexion DB
         Class driverClass = Class.forName("org.apache.derby.jdbc.ClientDriver");
         Connection jdbcConnection = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/sample", "app", "app");
@@ -64,14 +48,10 @@ public class PersonneServiceCrudTest {
         
         // Import
         FlatXmlDataSet dataSet = new FlatXmlDataSet(new FlatXmlProducer(new InputSource(new FileInputStream("donnees.xml"))));
-        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet); }
-    
-    @Test
-    public void findOneByPrenomAndNomTest(){
-        //serv.findOneByPrenomAndNom("jerome", "VDP");
-     
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
     }
-    
-    
+    @Test
+    public void findOneByTitreOK(){
+        
+    }
 }
-
